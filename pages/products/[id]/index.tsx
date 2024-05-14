@@ -39,7 +39,7 @@ export default function ProductsEdit() {
         }
 
         if (data.images.length) {
-            Array.from(data.images).forEach(item => formData.append('images[]', item));
+            Array.from(data.images).forEach((item: any) => formData.append('images[]', item));
         }
 
         try {

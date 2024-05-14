@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import Router from "next/router";
 
 export default function Products() {
     const [data, setData] = useState(null);
@@ -56,7 +57,7 @@ export default function Products() {
                                 <td>{product.price}</td>
                                 <td>{product.stock ?? 0}</td>
                                 <td>
-                                    <Button as={Link} href={`/products/${product.id}`} variant="primary" size="sm">Editar</Button>
+                                    <Button onClick={() => Router.push(`/products/${product.id}`)} variant="primary" size="sm">Editar</Button>
                                 </td>
                                 <td>
                                     <Button variant="danger" size="sm" onClick={() => removeProduct(product.id)}>Excluir</Button>
@@ -66,7 +67,7 @@ export default function Products() {
                     }
                 </tbody>
             </Table>
-            <Button as={Link} href={`/products/add`} variant="primary">Novo produto</Button>
+            <Button onClick={() => Router.push('/products/add')} variant="primary">Novo produto</Button>
         </>
     );
 }

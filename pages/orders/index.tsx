@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import Router from "next/router";
 
 export default function Orders() {
     const [data, setData] = useState(null);
@@ -40,7 +41,7 @@ export default function Orders() {
                         <th>ID</th>
                         <th>Criado</th>
                         <th>Produtos</th>
-                        <th width="1"></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +59,7 @@ export default function Orders() {
                     }
                 </tbody>
             </Table>
-            <Button as={Link} href={`/orders/add`} variant="primary">Novo pedido</Button>
+            <Button onClick={() => Router.push('/orders/add')} variant="primary">Novo pedido</Button>
         </>
     );
 }
